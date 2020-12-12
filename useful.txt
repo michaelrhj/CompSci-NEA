@@ -1,0 +1,2 @@
+OOP Creating Stages: https://www.youtube.com/watch?v=j9yMFG3D7fg
+Slider bar: https://www.dreamincode.net/forums/topic/401541-buttons-and-sliders-in-pygame/

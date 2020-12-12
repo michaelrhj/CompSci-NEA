@@ -1,0 +1,15 @@
+Some examples of different parts of design. This is just a snapshot do what you need to for your project.
+
+Ill be sending you an ocr link in next couple of days.
+
+ 
+
+Design 1.  The key variables not ideal a description of what each does would have been better and meaningful names.
+
+ 
+
+These are for Wilson use only.
+
+ 
+
+Mrs Gill.

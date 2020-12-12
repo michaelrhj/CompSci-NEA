@@ -1,0 +1,48 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ They want a game that is intellectually challenging and fun. They also want a game where their progress can be saved in case they don’t have time to finish a particular level. My users 
+
+•	Students are working very hard to prepare for A level exams
+•	When they go home, they like to relax and disconnect from their studies
+•	The majority of them play videogames to do this
+•	However, they could play a game that also would be beneficial to their studies
+•	Projectile Motion simulator & game
+•	One option where they can simulate their own projectiles and calculate variables
+•	Another option where they try to use their projectiles to hit objects
+•	Becomes more difficult over time with levels
+•	Progress is stored and users can come back to the same level – Login system
+•	It will require users to take account of terrain, air resistance etc.
+•	Solvable by computer methods as the user would be able to input details which affects the path that the projectile takes
+•	Algorithm would calculate the path the projectile would take
+•	Scores and progress stored in a database
+Features that make the problem solvable by computational methods:
+•	Solution will be software that shows an animation of how projectile would move
+
+Problem recognition
+•	Overall problem is working out how different variables affect the motion of a pro
+Problem decomposition
+Use of divide and conquer
+Use of abstraction
+
+The game will have many levels where hitting the target becomes progressively harder as more mathematical calculations are needed. The algorithm behind the animation would take into account all factors and calculate the accurate path of the projectile. The animation would then show the movement of the projectile towards the target so that the user can see how close they are. 
+
+3.1.2 – Stakeholders
+•	Physics students in my class
+•	Allows them to relax whilst also practising a vital area of Physics
+•	
