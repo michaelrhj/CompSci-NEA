@@ -1,0 +1,17 @@
+objective of the milestone
+
+code listing - show algorithms we have implemented
+explanation of the code
+relate code to decomposition from analysis and justify
+modular and structured code
+annotated code
+appropriately named variables and structures
+evidence of validation
+
+module testing
+evidence of testing
+evidence of failed tests and remedial actions taken with full justification for actions
+
+
+user feedback reflections
+show review at key stages
