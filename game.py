@@ -36,7 +36,7 @@ gravity = -9.8
 space = pymunk.Space()
 target1 = create_target(space)
 
-projectile_img = pygame.image.load('projectile1.png')
+projectile_img = pygame.image.load('C:/Users/M/Desktop/Files/CompSci-NEA/projectile1.png')
 projectile_x = 100
 projectile_y = 300
 velocity = 42

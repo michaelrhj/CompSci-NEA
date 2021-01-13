@@ -1,8 +1,7 @@
 #importing libraries that are used
-import sys
-from tkinter import *
-import sqlite3
+import sys, sqlite3, pygame, math, pymunk, os 
 
+from tkinter import *
 #main menu screen
 def home():
 	#window setup
@@ -73,6 +72,7 @@ def loginUser(enteredUsername,enteredPassword):  #takes entered values as parame
 		if enteredPassword == validate[1]: #checks entered password against stored password
 			window = Toplevel()
 			label = Label(window,text="Login successful").grid(row=1)
+			launch()
 		else:
 			window = Toplevel()
 			label = Label(window,text="Login unsuccessful").grid(row=1)
@@ -80,7 +80,8 @@ def loginUser(enteredUsername,enteredPassword):  #takes entered values as parame
 		window = Toplevel()
 		label = Label(window,text="Login unsuccessful").grid(row=1)
 
-
+def launch():
+	import game
 
 
 
