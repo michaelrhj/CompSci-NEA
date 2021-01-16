@@ -81,7 +81,7 @@ def loginUser(enteredUsername,enteredPassword):  #takes entered values as parame
 		label = Label(window,text="Login unsuccessful").grid(row=1)
 
 def launch():
-	import game
+	import sliders
 
 
 
