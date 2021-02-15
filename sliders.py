@@ -61,6 +61,15 @@ def pygame(x,y,z):
         pygame.draw.circle(screen,(0,0,0),(xPosition,yPosition),50)
     
     def updateProjectile(initVelocity,xProjectile,yProjectile,angle): #takes in required values as parameters
+        def collisionCheck(xProjectile,yProjectile): #takes in current projectile values
+            def collidePopup():
+                window = Toplevel()
+                label = Label(window,text="Collision. You have completed the level").grid(row=1) #displays pop up screen telling user there has been a collision
+
+            distance = math.sqrt(math.pow(400-xProjectile,2) + math.pow(450-yProjectile,2)) #calculates distance using pythagoras theorem
+            if distance<70: #gives leeway as object sizes mean that the distance may never actually be zero
+                pygame.quit()
+                collidePopup() #calls collision function
         timeNow = pygame.time.get_ticks() #uses pygame to find current time
         #validates that initial velocity is greater than 0
         if initVelocity>0:
@@ -82,13 +91,13 @@ def pygame(x,y,z):
         if xProjectile>600:
             running = False
             pygame.quit()
-            sys.exit()                
         if yProjectileReal>600 or yProjectileReal<0:
             running = False
             pygame.quit()
-            sys.exit()              
 
         screen.blit(projectileImg,(xProjectile,yProjectile))
+        collisionCheck(xProjectile,yProjectile)
+
     pygame.init() #initialises pygame
     screen = pygame.display.set_mode((600,600)) #sets screen
 
@@ -108,7 +117,6 @@ def pygame(x,y,z):
             if event.type == pygame.QUIT:
                 running = False
                 pygame.quit()
-                sys.exit()
       
 
         screen.fill((52,110,235)) #screen background
@@ -119,3 +127,4 @@ def pygame(x,y,z):
         clock.tick_busy_loop(FPS)
 
 home()
+
