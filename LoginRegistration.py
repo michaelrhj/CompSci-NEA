@@ -72,7 +72,7 @@ def loginUser(enteredUsername,enteredPassword):  #takes entered values as parame
 		if enteredPassword == validate[1]: #checks entered password against stored password
 			window = Toplevel()
 			label = Label(window,text="Login successful").grid(row=1)
-			launch()
+			launch(enteredUsername)
 		else:
 			window = Toplevel()
 			label = Label(window,text="Login unsuccessful").grid(row=1)
@@ -80,23 +80,57 @@ def loginUser(enteredUsername,enteredPassword):  #takes entered values as parame
 		window = Toplevel()
 		label = Label(window,text="Login unsuccessful").grid(row=1)
 
-def launch():
+def launch(enteredUsername):
+	conn = sqlite3.connect('ProjectileMotionGame.db') #connects to database
+	conn.execute("PRAGMA foreign_keys = ON")
+	c = conn.cursor() #cursor class allows you to invoke methods that execute sqlite statements
+	validate = c.execute("SELECT username FROM levels WHERE username=?", (enteredUsername,)).fetchone() #checks database for entries with the corresponding username
+	print(c.fetchall())
 	import sliders
 
 
 
 #procedure to create table in my database
+'''
 def createTable():
 	conn = sqlite3.connect('ProjectileMotionGame.db') #connects to database
+	conn.execute("PRAGMA foreign_keys = 1")
 	c = conn.cursor() #cursor class allows you to invoke methods that execute sqlite statements
 	#table is created with username and password fields
 	c.execute("""CREATE TABLE users(
-		username text,
+		username text PRIMARY KEY,
 		password text
 		)""")
 	conn.commit() #changes are saved
 	conn.close() #connection closed
+'''
+def delete():
+	conn = sqlite3.connect('ProjectileMotionGame.db')
+	c = conn.cursor()
+	c.execute("DROP TABLE users")
+	c.execute("DROP TABLE levels")
+	print("Table dropped...")
+	conn.commit()
+	conn.close()
 
+def createTable():
+	conn = sqlite3.connect('ProjectileMotionGame.db') #connects to database
+	conn.execute("PRAGMA foreign_keys = ON")
+	c = conn.cursor() #cursor class allows you to invoke methods that execute sqlite statements
+	#table is created with username and password fields
+	#table is created with username and password fields
+	c.execute("""CREATE TABLE users(
+		username text PRIMARY KEY,
+		password text
+		)""")
+	#conn.commit() #changes are saved
+	#conn.close() #connection closed
+
+	c.execute("""CREATE TABLE levels(
+		username text,
+		level int DEFAULT 1,
+		FOREIGN KEY (username) REFERENCES users(username))""") #foreign key is defined
+	conn.commit() #changes are saved
+	conn.close() #connection closed
 
 home()
-
