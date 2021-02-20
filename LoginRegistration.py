@@ -1,6 +1,6 @@
 #importing libraries that are used
-import sys, sqlite3, pygame, math, pymunk, os 
-
+import sys, sqlite3, pygame, math, pymunk, os
+import winsound
 from tkinter import *
 #main menu screen
 def home():
@@ -37,7 +37,37 @@ def home():
 	#register button
 	registerButton = Button(window,text="Register",width="8",command=lambda: registerUser(registerUsernameEntry.get(),registerPasswordEntry.get())).place(x=500, y=200)
 
+	#settings button
+	settingsPhoto = PhotoImage(file='C:\\Users\\M\\Desktop\\Files\\CompSci-NEA\\settings.png') #references settings image
+	settingsButton = Button(window,text="Settings",image=settingsPhoto,compound=LEFT,command=settingsMenu).place(x=50,y=430)
+
+	#instructions button
+	instructionsButton = Button(window,text="Instructions",height=2,command=openInstructions).place(x=350,y=430)
+
 	window.mainloop()
+
+def openInstructions():
+	os.startfile('C:\\Users\\M\\Desktop\\Files\\CompSci-NEA\\README.txt') #opens the README file
+def settingsMenu():	
+	musicIsOn = False #sets value
+	def switch(musicIsOn):
+		if musicIsOn: 
+			musicIsOn = False
+			winsound.PlaySound(None, winsound.SND_PURGE) #stops music
+		else:
+			winsound.PlaySound(r'C:\Users\M\Desktop\Files\CompSci-NEA\music.wav',winsound.SND_ASYNC) #plays music
+			return (musicIsOn == True)
+		
+	#menu setup
+	
+	window = Toplevel()
+	window.title("Settings")
+	window.minsize(400,250)
+	window.configure(bg="#0394fc")
+	#label and button
+	musicLabel = Label(window,text="Music is Off",bg="#0394fc").place(x=50,y=50)
+	#musicPhoto = PhotoImage(file='C:\\Users\\M\\Desktop\\Files\\CompSci-NEA\\music-note.png') #references music image
+	musicButton = Button(window,text="Toggle Music",height=2,command=lambda: switch(musicIsOn)).place(x=130,y=50)
 
 
 #procedure to register the user
@@ -82,11 +112,13 @@ def loginUser(enteredUsername,enteredPassword):  #takes entered values as parame
 
 def launch(enteredUsername):
 	conn = sqlite3.connect('ProjectileMotionGame.db') #connects to database
-	conn.execute("PRAGMA foreign_keys = ON")
 	c = conn.cursor() #cursor class allows you to invoke methods that execute sqlite statements
-	validate = c.execute("SELECT username FROM levels WHERE username=?", (enteredUsername,)).fetchone() #checks database for entries with the corresponding username
-	print(c.fetchall())
-	import sliders
+	validate = c.execute("SELECT level FROM levels WHERE username=?", (enteredUsername,)).fetchone() #checks database for entries with the corresponding username
+	if validate == '1':
+		import level1 #loads correct level
+	elif validate == '2':
+		import level2
+	import level1
 
 
 

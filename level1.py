@@ -7,7 +7,7 @@ FPS = 60
 def home():
     #window setup
     window = Tk()
-    window.title("Sliders")
+    window.title("Level 1 Sliders")
     window.minsize(800,500)
     window.configure(bg="#0394fc")
     
@@ -100,7 +100,7 @@ def pygame(x,y,z):
 
     pygame.init() #initialises pygame
     screen = pygame.display.set_mode((600,600)) #sets screen
-
+    pygame.display.set_caption("Level 1")
     space = pymunk.Space()
     target1 = createTarget(space)
     startTime = pygame.time.get_ticks()
