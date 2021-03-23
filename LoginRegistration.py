@@ -114,10 +114,11 @@ def launch(enteredUsername):
 	conn = sqlite3.connect('ProjectileMotionGame.db') #connects to database
 	c = conn.cursor() #cursor class allows you to invoke methods that execute sqlite statements
 	validate = c.execute("SELECT level FROM levels WHERE username=?", (enteredUsername,)).fetchone() #checks database for entries with the corresponding username
-	if validate == '1':
+	'''	#if validate == '1':
 		import level1 #loads correct level
-	elif validate == '2':
+	#elif validate == '2':
 		import level2
+		'''
 	import level1
 
 
